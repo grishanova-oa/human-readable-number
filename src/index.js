@@ -1,6 +1,6 @@
 module.exports = function toReadable (number) {
 
-    const numberOne = {
+    const numOne = {
         0: "",
         1: " one",
         2: " two",
@@ -13,7 +13,7 @@ module.exports = function toReadable (number) {
         9: " nine",
     }
 
-    const numberTen = {
+    const numTen = {
         2: " twenty",
         3: " thirty",
         4: " forty",
@@ -24,7 +24,7 @@ module.exports = function toReadable (number) {
         9: " ninety",
     }
 
-    const number10 = {
+    const numThousands = {
         10: " ten",
         11: " eleven",
         12: " twelve",
@@ -40,16 +40,16 @@ module.exports = function toReadable (number) {
     
     if (number === 0) return "zero";
 
-    let readableNumber = "";
-    if (number / 100 >= 1)  readableNumber = readableNumber + numberOne[Math.floor(number / 100)] + " hundred";
+    let numReadable = "";
+    if (number / 100 >= 1)  numReadable = numReadable + numOne[Math.floor(number / 100)] + " hundred";
     let rest = number % 100;
-    if (number % 100 >= 20) readableNumber = readableNumber + numberTen[Math.floor(rest / 10)];
+    if (number % 100 >= 20) numReadable = numReadable + numTen[Math.floor(rest / 10)];
     if ((number % 100 < 20) && (number % 100 >= 10)) {
-        readableNumber = readableNumber + number10[number % 100]; 
+        numReadable = numReadable + numThousands[number % 100]; 
     } else if (number % 10 > 0) {
-        readableNumber = readableNumber + numberOne[number % 10];
+        numReadable = numReadable + numOne[number % 10];
     }
-    return readableNumber.trim();
+    return numReadable.trim();
 
   
 }
